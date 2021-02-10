@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang = "en"
+
+<head>
+    {% block head %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="refresh" content="60" >
+
+    {% block styles %}
+        <!-- Bootstrap CSS -->
+        {{ bootstrap.load_css() }}
+    {% endblock %}
+
+    <title>Current Weather</title>
+    {% endblock %}
+</head>
+
+
+<body>
+
+
+{% block content %}
+<div class="container">
+	<div class = "row">
+		<div class = "col-sm">
+			<h1>Current Weather</h1>
+			<h3>Temperature: {{temperature}}°F</h3>
+			<h3>Humidity: {{humidity}}</h3>
+			<h3>Pressure: {{pressure}}</h3>
+		</div>
+
+		<div class = "col-sm">
+			<h1>Solar Info</h1>
+			<h3>Current Power: {{currentpower}} kW</h3>
+			<h3>Energy Today: {{energytoday}} kWh</h3>
+			<h3>Lifetime Energy: {{energylifetime}} kWh</h3>	
+		</div>
+	</div>
+	<div class = "row">
+		<div class = "col-sm">
+			<h1>Tomorrow</h1>
+			<h3>High Temp: {{high_tomorrow}}°F</h3>
+			<h3>Low Temp: {{low_tomorrow}}°F</h3>
+			<h3>Sunrise: {{forecast_sunrise}}</h3>
+			<h3>Sunset: {{forecast_sunset}}</h3>
+		</div>
+
+		<div class = "col-sm">
+		</div>
+	</div>
+</div>
+
+	
+{% endblock %}
+
+
+{% block scripts %}
+    <!-- Optional JavaScript -->
+    {{ bootstrap.load_js() }}
+{% endblock %}
+</body>
+</html>
