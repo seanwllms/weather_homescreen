@@ -25,24 +25,24 @@ def get_solar():
 ############### WEATHER DB QUERY CODE ###############
 #####################################################
 current_weather_query = "SELECT * FROM weatherlog WHERE time IN (SELECT max(time) FROM weatherlog)"
-def get_weather():
-	global weather, temp, humid, pressure, current_weather, cursor, db
-	
-	#connect to the database
-	db = mysql.connector.connect(
-    host = "localhost",
-    user = dbuser,
-    passwd = dbpassword,
-    database = "weather"
-	)
 
-	## creating an instance of 'cursor' class which is used to execute the 'SQL' statements in 'Python'
-	cursor = db.cursor()	
+#connect to the database
+db = mysql.connector.connect(
+  		host = "localhost",
+    		user = dbuser,
+    		passwd = dbpassword,
+  		database = "weather",
+		autocommit=True
+)
+
+
+def get_weather():
+	global weather, temp, humid, pressure, current_weather, db
+
 	current_weather = pd.read_sql_query(current_weather_query, db)
 	temp = current_weather["temperature"].item()
 	humid = current_weather["humidity"].item()
 	pressure = current_weather["pressure"].item()
-	db.commit()
 
 
 #####################################################

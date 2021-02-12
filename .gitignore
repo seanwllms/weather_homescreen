@@ -39,5 +39,8 @@ Thumbs.db
 
 #file with api keys and such
 passwords.py
+logweather/weatherenv/
 venv/
+env/
+
 __pycache__/
